@@ -53,8 +53,7 @@
 
    if ($dataConfig['googleTraffic'] === 'true') {
       $data['sub1'] = $_SERVER['SERVER_NAME'];
-      $data['sub2'] = $_POST['fbp'];
-      $data['sub3'] = (isset($_GET['fbp'])) ? trim($_GET['fbp']) : '';
+      $data['sub2'] = $_POST['gclid'];
    }
 
 
@@ -72,12 +71,10 @@
       'landingLanguage' => $data['cntKod'],
       'sub1' =>    $data['sub1'],
       'sub2' =>    $data['sub2'],
-      'sub3' =>    $data['sub3'],
       'landingGroup' => $dataConfig['landingGroup'],
       'sub_domain' => $data['URL_SUB_DOMAIN_NAME']
    );
 
-   
    // Define ip
    if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
       $ip =  $_SERVER['HTTP_CF_CONNECTING_IP'];
@@ -90,9 +87,6 @@
    }
 
    $order['ip'] = $ip;
-
-   var_dump($order);
-   // var_dump($order['ip']);
 
    $headers = array(
       "Content-Type: application/x-www-form-urlencoded",

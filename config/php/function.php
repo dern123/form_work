@@ -23,9 +23,8 @@
     }
 
     // Формирование номера телефона
-    function getPhone($countryDialCode, $phone) {printf("er",$phone);
+    function getPhone($countryDialCode, $phone) {
         return $countryDialCode.str_replace(array(' ', '-', '_', '(', ')', $countryDialCode), '', trim(strip_tags($phone)));
-
     }
 
 ?>
