@@ -1,73 +1,122 @@
 .href-link {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+.icon-form {
+    /* display: none; */
+    width: 50%;
 }
 
 .waiting_block {
-  display: none;
+    display: none;
 }
 
 .waiting_block img {
-  display: block;
-  width: 175px;
-  height: 175px;
-  margin: 20px auto;
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
+    display: block;
+    width: 175px;
+    height: 175px;
+    margin: 20px auto;
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
 }
 
 @-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
 }
 
 @-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .success_block {
-  display: none;
+    display: none;
 }
 
 .success_block h3 {
-  color: #ffffff;
-  font-weight: bolder;
-  font-size: 20px;
-  margin: 10px 0px;
-  text-align: center;
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 20px;
+    margin: 10px 0px;
+    text-align: center;
 }
 
 .success_block img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
 .valid-msg {
-  color: green;
+    color: green;
 }
 
 .error-msg {
-  color: red;
-  font-weight: 700;
+    color: red;
+    font-weight: 700;
 }
 
 label.error {
-  all: unset !important;
-  color: red !important;
-  font-weight: bold !important;
+    all: unset !important;
+    color: red !important;
+    font-weight: bold !important;
 }
 
 label.error:before,
 label.error:after {
-  all: unset !important;
+    all: unset !important;
+}
+
+#myModal {
+    width: 298px;
+    height: 218px;
+    margin: 0 auto;
+    padding: 18px 9px;
+    border-radius: 4px;
+    background: #fafafa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    z-index: 38;
+    text-align: center;
+}
+
+#myModal #myModal__close {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 1px;
+    right: 11px;
+    cursor: pointer;
+    display: block;
+    font-size: 29px;
+}
+
+#myOverlay {
+    z-index: 37;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: none;
 }

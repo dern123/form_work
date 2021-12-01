@@ -13,7 +13,8 @@
    // Отсеиваем случайные переходы на страницу отправки
    if(empty($_POST))
       exit;
-
+      clickid=12345&
+      clickid%3D12345%26
    // Считываем конфиг для отправки
    $config = file_get_contents(dirname(__FILE__) . '/config/config.json'); 
    $dataConfig = json_decode($config, true); 
@@ -39,8 +40,8 @@
       'Campaign'           => $_POST['Campaign'],                                                  // Campaign
       'Placement'          => $_POST['Placement'],                                                 // Placement
       'sub1'               => $_POST['sub1'],                                                      // sub1
-      'sub2'               => $_POST['sub2'],                                                      // sub2
-      'sub3'               => $_POST['sub3'],                                                      // sub3
+      'sub2'               => $_POST['clickid'],                                                      // sub2
+      'clickid'            => $_POST['clickid'],                                                      // sub3
       'sub4'               => $_POST['sub4'],                                                      // sub4
       'sub5'               => $_POST['sub5'],                                                      // sub5
       'sub6'               => $_POST['sub6'],                                                      // sub6
@@ -53,28 +54,34 @@
 
    if ($dataConfig['googleTraffic'] === 'true') {
       $data['sub1'] = $_SERVER['SERVER_NAME'];
-      $data['sub2'] = $_POST['gclid'];
+      $data['sub2'] = $_POST['clickid'];
+      // $data['sub3'] = (isset($_GET['fbp'])) ? trim($_GET['fbp']) : '';
+      $data['sub4'] = $_POST['fbp'];
    }
 
 
 
    //CONNECT TO CRM TEST
    $order = array (
-      'campaign_id' => $dataConfig['campaign_id'],
-      'landing' => $data['landing'],
-      'phone' => $data['phone'],
-      'firstName' => $data['name'],
-      'lastName'=> $data['surname'],
-      'email'	  => $data['email'],
-      'apiKey'   => $dataConfig['apiKey'],
-      'country' => $data['country'],
-      'landingLanguage' => $data['cntKod'],
-      'sub1' =>    $data['sub1'],
-      'sub2' =>    $data['sub2'],
-      'landingGroup' => $dataConfig['landingGroup'],
-      'sub_domain' => $data['URL_SUB_DOMAIN_NAME']
+      'campaign_id' =>        $dataConfig['campaign_id'],
+      'landing' =>            $data['landing'],
+      'phone' =>              $data['phone'],
+      'firstName' =>          $data['name'],
+      'lastName'=>            $data['surname'],
+      'email'	  =>           $data['email'],
+      'apiKey'   =>           $dataConfig['apiKey'],
+      'country' =>            $data['country'],
+      'landingLanguage' =>    $data['cntKod'],
+      'FacebookPixel'      => $data['FacebookPixel'],
+      'fbclid'             => $data['fbclid'],
+      'sub1' =>               $data['sub1'],
+      'sub2' =>               $data['sub2'],
+      'clickid ' =>               $data['clickid'],
+      'landingGroup' =>       $dataConfig['landingGroup'],
+      'sub_domain' =>         $data['URL_SUB_DOMAIN_NAME']
    );
 
+   
    // Define ip
    if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
       $ip =  $_SERVER['HTTP_CF_CONNECTING_IP'];
@@ -87,6 +94,9 @@
    }
 
    $order['ip'] = $ip;
+
+   var_dump($order);
+   // var_dump($order['ip']);
 
    $headers = array(
       "Content-Type: application/x-www-form-urlencoded",
@@ -155,7 +165,37 @@
       . "Email: " . $data['email'] . "\r\n"
       . "Phone: " . $data['phone'] . "\r\n"
       . "Country: " . $data['country'] . "\r\n"
+      . "Ip: " . $data["ip"] . "\r\n"
       . "URL: " . $data['landing'];
    logFile($requestLog, 'config/log/afterMail.log');
+
+   // Создание лога после отправки лида
+
+
+   $requestJson = array(
+      'Code' =>        $GLOBALS['http_code'],
+      'FullName' =>            $data['name']  . " " . $data['surname'] ,
+      'Email' =>              $data['email'],
+      'Phone' =>         $data['phone'],
+      'Country'=>            $data['country'],
+      'Ip'	  =>           $data["ip"] ,
+      'clickid'=>                $_POST['clickid'],
+      'clickid2'=>                $data['sub2'],
+      'URL'   =>           $data['landing']
+   );
+   var_dump(json_encode($requestJson));
+   
+   $requestLog = 
+    "{"
+      . "\""."Code" . "\"" . ": " . "\"" .  $GLOBALS['http_code'] . "\"" . ",". "\r\n"
+      . "\"". "FullName" . "\"" . ": " . "\"". $data['name']  . " " . $data['surname'] . "\"". ",". "\r\n"
+      . "\"". "Email" . "\"" . ": "  . "\"". $data['email']  . "\"". ",". "\r\n"
+      . "\"". "Phone" . "\"" . ": "  . "\"". $data['phone']  . "\"". ",". "\r\n"
+      . "\"". "Country" . "\"" . ": " . "\"". $data['country']  . "\"". ",". "\r\n"
+      . "\"". "Ip" . "\"" . ": " . "\"" . $data["ip"]  . "\"". ",". "\r\n"
+      . "\"". "URL" . "\"" . ": "  . "\"". $data['landing'] . "\"".  "\r\n"
+      ."}". ",";
+   
+      objFile($requestJson, 'config/log/config.json');
 
 ?>
