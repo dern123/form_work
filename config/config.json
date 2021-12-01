@@ -1,0 +1,13 @@
+{
+    "developmentMode": "false",
+    "apiPath": "google.com",
+    "campaign_id": "6194fe547470ac1dcb231070",
+    "apiKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk0ZmNkZTc0NzBhYzFkY2IyMzBmZTciLCJyb2xlIjoiV2ViTWFzdGVyIiwiaWF0IjoxNjM3MTU0MTUxfQ.n7_RkbgkZ79dDCynb2Jjx70kSYeI9GYq7riLVrGcQDo",
+    "landingLanguage": "RU",
+    "landingGroup": "GAZ-PROM",
+    "googleTraffic": "false",
+    "turnOnFacebookPixel": "true",
+    "turnOnTiktokPixel": "false",
+    "turnOnReplain": "false",
+    "idReplain": "5f3ce02a-9739-42ca-ba09-33595a67f5f0"
+}

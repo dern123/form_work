@@ -1,0 +1,100 @@
+body {
+  background-color: #353535;
+}
+
+.padding {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 500px;
+}
+
+.card {
+    margin-bottom: 1.5rem
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c8ced3;
+    border-radius: .25rem
+}
+
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f0f3f5;
+    border-bottom: 1px solid #c8ced3
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+.form-control:focus {
+    color: #5c6873;
+    background-color: #fff;
+    border-color: #c8ced3 !important;
+    outline: 0;
+    box-shadow: 0 0 0 #F44336
+}
+.form-group h3 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .padding {
+    min-width: 100%;
+  }
+}
+
+.t-btn {
+    display: inline-block;
+    font-family: 'Formular',Arial,sans-serif;
+    height: 60px;
+    border: 0 none;
+    font-size: 16px;
+    padding-left: 60px;
+    padding-right: 60px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-weight: 700;
+    background-image: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #000000;
+    border: 2px solid #f8b400;
+    background-color: #f8b400;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    outline: none !important;
+}
+.t-btn:hover {
+  background-color: #152035 !important;
+    color: #ffffff !important;
+    border-color: #f8b400 !important;
+}

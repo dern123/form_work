@@ -1,0 +1,15 @@
+.input_wrap {
+    margin-bottom: 1rem;
+}
+
+.func_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.func_wrap img {
+    position: absolute;
+    max-width: 25px;
+    margin-right: 5px;
+}
